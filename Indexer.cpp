@@ -5,6 +5,7 @@
 #include "PagedFile.h"
 
 
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	CPagedFile pf( "test.db", 8192, 10000 );
@@ -21,6 +22,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool r = pf2.ReadPage( 3153, b2 );
 	printf("%d\n", r); 
 	printf("%d %d %d %d\n", b2[0], b2[1], b2[2], b2[3] );
+	pf2.Close();
 
 	return 0;
 }
