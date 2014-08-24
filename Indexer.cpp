@@ -25,6 +25,22 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("%d %d %d %d\n", b2[0], b2[1], b2[2], b2[3] );
 	pf2.Close();
 
+
+	BTree tree;
+
+	tree.Insert(9);
+	tree.Insert(7);
+	tree.Insert(11);
+
+	for ( int n = 0; n < 1500; n += 2 ) {
+		if ( ! tree.Insert( n ) ) {
+			printf( "%d\n", n );
+			break;
+		}
+	}
+
+	tree.print();
+
 	return 0;
 }
 
