@@ -79,6 +79,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BTree.h" />
+    <ClInclude Include="BTreeIndexNode.h" />
+    <ClInclude Include="BTreeNode.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="PagedFile.h" />
     <ClInclude Include="stdafx.h" />
