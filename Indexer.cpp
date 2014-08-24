@@ -3,7 +3,8 @@
 
 #include "stdafx.h"
 #include "PagedFile.h"
-
+#include "BTree.h"
+#include "BTreeIndexNode.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
