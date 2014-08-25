@@ -1,7 +1,8 @@
+#pragma once
 
+class BTree;
 #include "BTreeNode.h"
 
-#pragma once
 
 class BTreeIndexNode : public BTreeNode {
 	friend class BTree;
@@ -46,6 +47,7 @@ public:
 		for ( int n = 0; n < m_nKeys; n++ ) {
 			printf( " %lld[%d]", m_key[n], m_pageNumbers[n] );
 		}
+		printf( "\n" );
 	}
 
 	bool HasKey( __int64 nKey ) {
@@ -95,5 +97,8 @@ public:
 
 		return true;
 	}
+
+
+	bool InsertNonFull( BTree* pTree,  __int64 nKey );
 };
 

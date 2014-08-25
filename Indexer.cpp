@@ -40,6 +40,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	tree.print();
+	printf( "\n" );
+	
+	tree.m_pageCache.at(0)->print();
+	printf( "\n" );
+
+	tree.m_pageCache.at(2)->print();
+	printf( "\n" );
 
 	return 0;
 }
