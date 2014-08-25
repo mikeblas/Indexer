@@ -1,17 +1,25 @@
 
-
 #pragma once
 
 class BTreeNode {
 
-
 protected:
 	bool m_bIsLeaf;
+	int m_nPageNumber;
 	BTreeNode() {
 		m_bIsLeaf = true;
 	}
 
 public:
+	void SetLeaf( bool bLeaf ) { 
+		m_bIsLeaf = bLeaf;
+	}
+
+	int GetPageNumber() {
+		return m_nPageNumber;
+	}
+
+	virtual bool IsFull() = 0;
 
 	virtual ~BTreeNode() {
 	}
