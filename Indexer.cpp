@@ -28,24 +28,44 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	BTree tree;
 
-	tree.Insert(9);
-	tree.Insert(7);
-	tree.Insert(11);
+	tree.Insert(8);
+	tree.Insert(5);
+	tree.print();
+	printf( "---\n" );
 
+	tree.Insert(1);
+	tree.print();
+	printf( "---\n" );
+
+	tree.Insert(7);
+	tree.print();
+	printf( "---\n" );
+
+	tree.Insert(3);
+	tree.print();
+	printf( "---\n" );
+	tree.Insert(12);
+	tree.Insert(9);
+	tree.Insert(6);
+	tree.print();
+	printf( "\n" );
+
+	/*
 	for ( int n = 0; n < 1500; n += 2 ) {
 		if ( ! tree.Insert( n ) ) {
 			printf( "%d\n", n );
 			break;
 		}
 	}
+	*/
 
 	tree.print();
 	printf( "\n" );
 	
-	tree.m_pageCache.at(0)->print();
+	tree.m_pageCache.at(0)->print( );
 	printf( "\n" );
 
-	tree.m_pageCache.at(2)->print();
+	tree.m_pageCache.at(2)->print(  );
 	printf( "\n" );
 
 	return 0;

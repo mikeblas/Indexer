@@ -1,6 +1,8 @@
 
 #pragma once
 
+class BTree;
+
 class BTreeNode {
 
 protected:
@@ -30,7 +32,7 @@ public:
 		return m_bIsLeaf;
 	}
 
-	virtual bool Insert( __int64 nKey ) = 0;
+	virtual bool InsertNonFull( __int64 nKey ) = 0;
 
-	virtual void print() = 0;
+	virtual void print( ) = 0;
 };
