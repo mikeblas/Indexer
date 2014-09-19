@@ -1,7 +1,7 @@
 
 #pragma once
 
-class BTree;
+template<int Tee> class BTree;
 
 class BTreeNode {
 
