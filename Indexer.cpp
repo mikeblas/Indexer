@@ -7,6 +7,59 @@
 #include "BTreeIndexNode.h"
 
 
+
+void TreeTest1()
+{
+	BTree<2> tree;
+
+	tree.Insert(4);
+	tree.Insert(0);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(6);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(8);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(2);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(1);
+	tree.Insert(7);
+	tree.Insert(3);
+	tree.Insert(9);
+	tree.Insert(5);
+	tree.print();
+	printf( "\n" );
+}
+
+void TreeTest2()
+{
+	BTree<2> tree;
+
+	tree.Insert(5);
+	tree.Insert(9);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(3);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(7);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(1);
+	tree.print();
+	printf( "\n" );
+	tree.Insert(2);
+	tree.Insert(8);
+	tree.Insert(6);
+	tree.Insert(0);
+	tree.Insert(4);
+	tree.print();
+	printf( "\n" );
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	CPagedFile pf( "test.db", 8192, 10000 );
@@ -26,28 +79,56 @@ int _tmain(int argc, _TCHAR* argv[])
 	pf2.Close();
 
 
-	BTree tree;
+	TreeTest1();
+	TreeTest2();
 
-	tree.Insert(9);
+	BTree<2> tree;
+	/*
+	// two, from database book
+	tree.Insert(8);
+	tree.Insert(5);
+	tree.print();
+	printf( "---\n" );
+
+	tree.Insert(1);
+	tree.print();
+	printf( "---\n" );
+
 	tree.Insert(7);
-	tree.Insert(11);
+	tree.print();
+	printf( "---\n" );
 
+	tree.Insert(3);
+	tree.print();
+	printf( "---\n" );
+	tree.Insert(12);
+	tree.Insert(9);
+	tree.Insert(6);
+	tree.print();
+	printf( "\n" );
+	*/
+
+	/*
 	for ( int n = 0; n < 1500; n += 2 ) {
 		if ( ! tree.Insert( n ) ) {
 			printf( "%d\n", n );
 			break;
 		}
 	}
+	*/
 
+	/*
 	tree.print();
 	printf( "\n" );
 	
-	tree.m_pageCache.at(0)->print();
+	tree.m_pageCache.at(0)->print( );
 	printf( "\n" );
 
-	tree.m_pageCache.at(2)->print();
+	tree.m_pageCache.at(2)->print(  );
 	printf( "\n" );
+	*/
 
+	
 	return 0;
 }
 

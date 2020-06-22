@@ -47,8 +47,5 @@
     <ClCompile Include="Indexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BTreeIndexNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
