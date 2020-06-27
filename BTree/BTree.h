@@ -43,10 +43,10 @@ public:
 
 		pNewNode->SetLeaf( pNode->IsLeaf() );
 
-		pNewNode->m_nKeys = pNode->m_tee-1;
+		pNewNode->m_nKeys = pNode->m_tee;
 
 		// right half of node into new node
-		for ( int n = 0; n <= pNode->m_tee-1; n++ ) {
+		for ( int n = 0; n <= pNode->m_tee; n++ ) {
 			pNewNode->m_key[n] = pNode->m_key[n + pNode->m_tee ];
 		}
 

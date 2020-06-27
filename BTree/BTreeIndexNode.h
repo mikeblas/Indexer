@@ -52,10 +52,10 @@ public:
 		int nIndex = m_nKeys;
 		while (nIndex > 0)
 		{
-			if (nKey == m_key[nIndex - 1]) {
+			if (nKey == m_key[nIndex-1]) {
 				return true;
 			}
-			if (nKey < m_key[nIndex - 1]) {
+			if (nKey < m_key[nIndex-1]) {
 				nIndex--;
 			}
 			else {
@@ -64,7 +64,7 @@ public:
 
 		}
 
-		if (m_pageNumbers[nIndex] == -1) {
+		if (nIndex == -1 || m_pageNumbers[nIndex] == -1) {
 			return false;
 		}
 
@@ -73,8 +73,8 @@ public:
 	}
 
 	virtual bool IsFull() {
-		return ( m_nKeys == 2 * m_tee - 1 );
-		// return (m_nKeys == 2 * m_tee);
+		// return ( m_nKeys == 2 * m_tee - 1 );
+		return (m_nKeys == 2 * m_tee);
 	}
 
 	bool InsertNonFull( __int64 nKey );
