@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include "common.h"
 
+
 class CPagedFile {
 	const char* m_pstrFileName;
 	int m_nPageSize;

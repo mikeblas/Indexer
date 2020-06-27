@@ -13,9 +13,7 @@ class BTreeIndexNode : public BTreeNode {
 	// 8n +4n +4 = 8192
 	// 12n = 8188
 	// n = 682 
-	// static const int m_nOrder = 682;
 	static const int m_tee = 2;
-	// static const int m_nOrder = 3;
 	__int64 m_key[2 * m_tee];
 	int m_pageNumbers[2 * m_tee + 1];
 	int m_nKeys;
@@ -46,31 +44,37 @@ public:
 		m_nPageNumber = m_nNextPageNumber++;
 	}
 
-	void print( );
+	void print();
+	void printToString(std::string& str);
 
 	bool HasKey( __int64 nKey ) {
-		// is this a leaf node?
-		if ( m_bIsLeaf ) {
+
+		int nIndex = m_nKeys;
+		while (nIndex > 0)
+		{
+			if (nKey == m_key[nIndex - 1]) {
+				return true;
+			}
+			if (nKey < m_key[nIndex - 1]) {
+				nIndex--;
+			}
+			else {
+				break;
+			}
+
+		}
+
+		if (m_pageNumbers[nIndex] == -1) {
 			return false;
 		}
 
-		int nIndex = 0;
-		while ( nIndex < m_nKeys && nKey > m_key[nIndex] ) {
-			nIndex += 1;
-		}
-
-		if ( nIndex < m_nKeys && nKey == m_key[nIndex] ) {
-			return true;
-		}
-
-		// read m_pageNumber[nIndex];
-		// search it recursively
-		return false;
+		BTreeIndexNode* pChild = m_pOwner->GetPage(m_pageNumbers[nIndex]);
+		return pChild->HasKey(nKey);
 	}
 
 	virtual bool IsFull() {
 		return ( m_nKeys == 2 * m_tee - 1 );
-		// return ( m_nKeys == m_nOrder );
+		// return (m_nKeys == 2 * m_tee);
 	}
 
 	bool InsertNonFull( __int64 nKey );
@@ -78,6 +82,32 @@ public:
 
 template<int Tee>
 int BTreeIndexNode<Tee>::m_nNextPageNumber = 0;
+
+template<int Tee>
+void BTreeIndexNode<Tee>::printToString(std::string& str) {
+
+	char sz[100];
+	sprintf(sz, "[%d]%s ", m_nPageNumber, m_bIsLeaf ? "LEAF" : "INTERNAL");
+	str.append(sz);
+
+	sprintf(sz, "%d/%d:", m_nKeys, 2 * m_tee);
+	str.append(sz);
+
+	sprintf(sz, "[%d]", m_pageNumbers[0]);
+	str.append(sz);
+	for (int n = 0; n < m_nKeys; n++) {
+		sprintf(sz, " %lld [%d]", m_key[n], m_pageNumbers[n + 1]);
+		str.append(sz);
+	}
+	str.append("\n");
+
+	for (int n = 0; n < m_nKeys + 1; n++) {
+		if (m_pageNumbers[n] != -1) {
+			BTreeIndexNode* pNode = m_pOwner->GetPage(m_pageNumbers[n]);
+			pNode->printToString(str);
+		}
+	}
+}
 
 template<int Tee>
 void BTreeIndexNode<Tee>::print( ) {

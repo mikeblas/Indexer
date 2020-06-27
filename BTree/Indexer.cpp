@@ -13,22 +13,23 @@ void TreeTest1()
 	BTree<2> tree;
 
 	tree.Insert(4);
+	tree.print();
 	tree.Insert(0);
 	tree.print();
-	printf( "\n" );
 	tree.Insert(6);
 	tree.print();
-	printf( "\n" );
 	tree.Insert(8);
 	tree.print();
-	printf( "\n" );
 	tree.Insert(2);
 	tree.print();
-	printf( "\n" );
 	tree.Insert(1);
+	tree.print();
 	tree.Insert(7);
+	tree.print();
 	tree.Insert(3);
+	tree.print();
 	tree.Insert(9);
+	tree.print();
 	tree.Insert(5);
 	tree.print();
 	printf( "\n" );

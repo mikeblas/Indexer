@@ -14,11 +14,11 @@ public:
 
 public:
 	BTree() {
-		m_pRoot = NULL;
+		m_pRoot = nullptr;
 	}
 
 	bool Insert( __int64 nNewKey ) { 
-		if ( m_pRoot == NULL ) {
+		if ( m_pRoot == nullptr ) {
 			m_pRoot = new BTreeIndexNode<Tee>( this );
 			m_pageCache.emplace( m_pRoot->GetPageNumber(), m_pRoot );
 			return m_pRoot->InsertNonFull( nNewKey );
@@ -80,16 +80,31 @@ public:
 	}
 
 	bool HasKey( __int64 nNewKey ) {
+
+		if (m_pRoot == nullptr)
+			return false;
+
 		return m_pRoot->HasKey( nNewKey );
 	}
 
 	void print() {
-		if ( m_pRoot == NULL ) {
-			printf( "node is NULL" );
+		if ( m_pRoot == nullptr ) {
+			printf("node is NULL\n");
 		} else {
-			m_pRoot->print( );
+			m_pRoot->print();
 		}
 		printf( "\n" );
+	}
+
+	void printToString(std::string& str) {
+
+		if (m_pRoot == nullptr) {
+			str.append("node is NULL\n");
+		}
+		else {
+			m_pRoot->printToString(str);
+		}
+		str.append("\n");
 	}
 
 	BTreeIndexNode<Tee> * GetPage( int nPageNumber ) {
