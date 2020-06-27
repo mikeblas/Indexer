@@ -79,7 +79,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	pf2.Close();
 
 
+	printf("=== test1\n\n");
 	TreeTest1();
+
+	printf("=== test2\n\n");
 	TreeTest2();
 
 	BTree<2> tree;

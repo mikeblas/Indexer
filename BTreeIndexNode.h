@@ -82,7 +82,7 @@ int BTreeIndexNode<Tee>::m_nNextPageNumber = 0;
 template<int Tee>
 void BTreeIndexNode<Tee>::print( ) {
 	printf( "[%d]%s ", m_nPageNumber, m_bIsLeaf ? "LEAF" : "INTERNAL" );
-	printf( "%d:", m_nKeys );
+	printf( "%d/%d:", m_nKeys, 2 * m_tee );
 
 	printf( "[%d]", m_pageNumbers[0] );
 	for ( int n = 0; n < m_nKeys; n++ ) {
@@ -112,7 +112,7 @@ bool BTreeIndexNode<Tee>::InsertNonFull( __int64 nKey ) {
 	} else {
 		// not a leaf; recurse down to find out where we belong
 		int nInsertBefore = m_nKeys;
-		while ( nInsertBefore >= 0 && nKey < m_key[nInsertBefore-1] ) {
+		while ( nInsertBefore > 0 && nKey < m_key[nInsertBefore-1] ) {
 			nInsertBefore --;
 		}
 
